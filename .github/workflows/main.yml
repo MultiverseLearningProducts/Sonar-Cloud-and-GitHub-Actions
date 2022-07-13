@@ -21,10 +21,11 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-     - name: Create Pull Request
-       uses: peter-evans/create-pull-request@v4
-       with:
-        commit-message: github actions dev to main
-        branch: main
-        base: dev
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: github actions dev to main
+          branch: main
+          base: dev
           
