@@ -36,6 +36,6 @@ jobs:
         push: true
         # List of secrets to expose to the build (e.g., key=string, GIT_AUTH_TOKEN=mytoken)
         # List of tags
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-node-demo/:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-node-demo:latest
         # Sets the target stage to build
         target: prod
