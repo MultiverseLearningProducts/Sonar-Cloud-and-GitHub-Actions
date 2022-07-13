@@ -8,7 +8,7 @@ describe('Sauce Model', () => {
 
 	test('can create a Sauce', async() => {
 		const testSauce = await Sauce.create({name : 'Cholula'})
-		expect(testSauce.name).toBe('Cholulaaaaaaa')
+		expect(testSauce.name).toBe('Cholula')
 	})
 
 
