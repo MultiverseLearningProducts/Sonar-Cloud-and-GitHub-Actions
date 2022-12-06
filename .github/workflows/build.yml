@@ -10,7 +10,7 @@ jobs:
   build:
     name: SonarCloud
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Install Dependencies
         run: npm i
 
