@@ -7,21 +7,18 @@ on:
     branches: [ "main" ]
 
 jobs:
-  # this `test` job id will be used later in this yml file
+  # Add SonarCloud configuration here
+  
+   
   test:
-    # this name can be used to trigger other workflows
     name: Test
     runs-on: ubuntu-latest
-
-    # list of steps to complete in the workflow, in order
     steps:
-    # extend from these published, pre-configured actions
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
-        # the node version for the setup-node action
         node-version: 16.x
-    # Install packages and run tests
     - run: npm ci
     - run: npm test
-      # Add deployment commands here
+  
+  # Add deployment commands here
