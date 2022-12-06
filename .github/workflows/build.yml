@@ -7,24 +7,21 @@ on:
     branches: [ "main" ]
 
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  # this `test` job id will be used later in this yml file
+  test:
+    # this name can be used to trigger other workflows
+    name: Test
     runs-on: ubuntu-latest
+
+    # list of steps to complete in the workflow, in order
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-        #  These commands exist in the original file.
-      - name: Install Dependencies
-        run: npm i
-
-      - name: Run tests
-        run: npm run test
-      
+    # extend from these published, pre-configured actions
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        # the node version for the setup-node action
+        node-version: 16.x
+    # Install packages and run tests
+    - run: npm ci
+    - run: npm test
       # Add deployment commands here
